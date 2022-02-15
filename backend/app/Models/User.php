@@ -43,9 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
     ];
+     /**
+     * The attributes that should be append.
+     *
+     * @var array<string, string>
+     */
+
+    protected $appends = ['is_admin'];
+
+
     // Attributes
     /**
-     * Is Admin Attribute
+     * Determine if the user is an administrator.
      *
      * @param  string  $value
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
@@ -57,28 +66,5 @@ class User extends Authenticatable
             set: fn ($value) => $value == true? "1" : "0",
         );
     }
-
-
-
-
-
-     public function getUserData()
-    {
-        return [
-
-            'name'=> $this->name,
-            'email'=> $this->email,
-            'user_id' => $this->id,
-            'is_admin'=> $this->is_admin,
-
-
-
-
-        ];
-    }
-
-
-
-
 
 }
