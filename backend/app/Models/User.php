@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
     ];
+    // Attributes
+    /**
+     * Is Admin Attribute
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function isAdmin(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => is_null($value)? false : (bool)$value,
+            set: fn ($value) => $value == true? "1" : "0",
+        );
+    }
+
 
 
 
@@ -60,26 +76,9 @@ class User extends Authenticatable
 
         ];
     }
-    /**
-     * Check User IS Admin
-     * @return bool
-     */
-    public function isAdmin()
-    {
-        if ((int)$this->is_admin == 1){
-            return true;
-        }
-        return false;
-    }
 
-    /**
-     * Set User To Admin
-     */
-    public  function setAdmin(){
-        $this->is_admin = 1;
-        $this->save();
 
-    }
+
 
 
 }
