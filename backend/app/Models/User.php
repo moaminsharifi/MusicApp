@@ -40,7 +40,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
+
+
 
 
      public function getUserData()
@@ -50,7 +53,7 @@ class User extends Authenticatable
             'name'=> $this->name,
             'email'=> $this->email,
             'user_id' => $this->id,
-            'is_admin'=> $this->isAdmin(),
+            'is_admin'=> $this->is_admin,
 
 
 
