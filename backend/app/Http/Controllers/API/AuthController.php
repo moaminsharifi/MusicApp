@@ -10,28 +10,25 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Helpers\CustomResponse;
 use Hash;
+use App\Http\Requests\API\AuthController\SingUpRequest;
+use App\Http\Requests\API\AuthController\LoginRequest;
+
 class AuthController extends Controller
 {
     /**
      * Create user
      *
-     * @return string message
+     * @return CustomResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return CustomResponse with Error
      */
-    public function signup()
+    public function signup(SingUpRequest $request)
     {
 
-        $attributes = request()->validate([
-            'name' => 'required|string|max:180',
-            'email' => 'required|string|email|unique:users|max:180',
-            'password' => 'required|string|max:180',
-            'password_confirm'=> 'required|same:password|max:180'
-        ]);
+        $attributes = $request->validated();
         $attributes['password'] =  Hash::make($attributes['password']);
         $user = User::create(
             $attributes
         );
-
-
 
         $success = $user->toArray();
         $success['token'] =  $user->createToken('authToken')->plainTextToken;
@@ -47,13 +44,9 @@ class AuthController extends Controller
      * @return CustomResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @return CustomResponse with Error
      */
-    public function login()
+    public function login(LoginRequest $request)
     {
-        $attributes = request()->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
+        $attributes = $request->validated();
 
 
         $user = User::where('email', $attributes['email'])->first();
