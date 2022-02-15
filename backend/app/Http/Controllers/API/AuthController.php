@@ -16,10 +16,19 @@ use App\Http\Requests\API\AuthController\LoginRequest;
 class AuthController extends Controller
 {
     /**
-     * Create user
+     * Register
      *
-     * @return CustomResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * @return CustomResponse with Error
+     * This endpoint lets to register and get your token.
+     *
+     * @bodyParam name string required  user name.
+     * @bodyParam email string required  user email.
+     * @bodyParam password string required user password.
+     * @bodyParam password_confirm string required user password confirm.
+     * @responseFile status=200 docs/responses/auth/user.singup.json
+     * @responseFile status=400 scenario="Password not match - 00004"  docs/responses/errors/00004.json
+     * @responseFile status=400 scenario="Email exist in database - 00004"  docs/responses/errors/00004.json
+     *
+     * @return CustomResponse
      */
     public function signup(SingUpRequest $request)
     {
@@ -38,11 +47,20 @@ class AuthController extends Controller
     }
 
     /**
-     * Login user and create token
+     * Login
      *
      *
-     * @return CustomResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * @return CustomResponse with Error
+     * This endpoint lets to Login and get your token.
+     *
+     *
+     * @bodyParam email string required  user email.
+     * @bodyParam password string required user password.
+
+     * @responseFile status=200 docs/responses/auth/user.login.json
+     * @responseFile status=404 scenario="User Not found - 10001"  docs/responses/errors/10001.json
+     * @responseFile status=400 scenario="Form validation - 00004"  docs/responses/errors/00004.json
+     *
+     * @return CustomResponse
      */
     public function login(LoginRequest $request)
     {
@@ -67,9 +85,16 @@ class AuthController extends Controller
     }
 
     /**
-     * Logout user (Revoke the token)
+     * Logout
      *
-     * @return string message
+     * This endpoint get token and make it invalid.
+     *
+     *
+     * @authenticated
+     * @responseFile status=200 docs/responses/auth/user.logout.json
+     * @responseFile status=403 scenario="Token Invalid - 10004"  docs/responses/errors/10004.json
+     *
+     * @return CustomResponse
      */
     public function logout()
     {
@@ -80,9 +105,16 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the authenticated User
+     * User Data
      *
-     * @return json user object
+     * This endpoint get token and return user data.
+     *
+     *
+     * @authenticated
+     * @responseFile status=200 docs/responses/auth/user.userdata.json
+     * @responseFile status=403 scenario="Token Invalid - 10004"  docs/responses/errors/10004.json
+     *
+     * @return CustomResponse
      */
     public function user()
     {
