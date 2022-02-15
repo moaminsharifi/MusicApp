@@ -1,0 +1,5 @@
+{
+        "ok":false,
+        "error" => "Method not allowed!",
+        "data" => "",
+      }

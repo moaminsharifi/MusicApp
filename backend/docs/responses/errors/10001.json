@@ -1,0 +1,5 @@
+{
+        "ok":false,
+        "error" => "User does not exist!",
+        "data" => "",
+      }

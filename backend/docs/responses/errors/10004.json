@@ -1,0 +1,5 @@
+{
+        "ok":false,
+        "error" => "Token not valid.",
+        "data" => "",
+      }
