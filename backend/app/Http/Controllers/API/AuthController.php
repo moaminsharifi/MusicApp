@@ -33,7 +33,7 @@ class AuthController extends Controller
 
 
 
-        $success = $user->getUserData();
+        $success = $user->toArray();
         $success['token'] =  $user->createToken('authToken')->plainTextToken;
         $success['token_type'] = 'Bearer';
         return CustomResponse::createSuccess($success);
@@ -61,7 +61,7 @@ class AuthController extends Controller
         abort_unless(Hash::check($attributes['password'], $user->password), CustomResponse::createError('10002') );
 
 
-        $success = $user->getUserData();
+        $success = $user->toArray();
         $success['token'] =  $user->createToken('authToken')->plainTextToken;
         $success['token_type'] = 'Bearer';
 
@@ -93,6 +93,6 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return CustomResponse::createSuccess(request()->user()->getUserData());
+        return CustomResponse::createSuccess(request()->user()->toArray());
     }
 }
