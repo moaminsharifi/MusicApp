@@ -1,0 +1,32 @@
+version: '3'
+networks:
+  internal_network:
+    name: ${INTERNAL_NETWORK_NAME}
+    external:
+      name: ${EXTERNAL_NETWORK_NAME}
+volumes:
+  mariadb-data:
+
+services:
+  music-app-backend:
+    build: ./_docker/backend/${ENVIRONMENT}
+    hostname: local-backend
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - ${EXPOSED_BACKEND_PORT}:${INTERNAL_BACKEND_PORT}
+    networks:
+      - internal_network
+    env_file:
+      - ./backend/.env
+  music-app-db:
+    build: ./_docker/db/${ENVIRONMENT}
+    hostname: local-db
+    volumes:
+      - 'mariadb-data:/var/lib/mysql'
+    ports:
+      - ${EXPOSED_DB_PORT}:${INTERNAL_DB_PORT}
+    networks:
+      - internal_network
+    env_file:
+      - ./db/.env
