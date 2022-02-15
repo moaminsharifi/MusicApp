@@ -3,7 +3,7 @@
     "data": {
         "name": "Adella Gleichner III",
         "email": "marquise34@example.net",
-        "user_id": 1,
+        "id": 1,
         "is_admin": false,
         "token": "1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ",
         "token_type": "Bearer"
