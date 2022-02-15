@@ -1,59 +1,26 @@
-FROM php:8.1-cli
-
-# INSTALL VIA APT-GET
+FROM ubuntu:20.04
+# install base packages
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     apt-utils \
     vim \
     default-mysql-client \
     cron \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libzip-dev \
     zip \
-    libmagickwand-dev \
-    libboost-all-dev \
     curl \
     git \
-    supervisor
-# INSTALL VIA DOCKER-PHP-EXT
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd
-
-RUN pecl install imagick && \
-    docker-php-ext-enable imagick
-
-
-RUN docker-php-ext-install -j$(nproc) pdo_mysql
-
-RUN docker-php-ext-install gd && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg
-
-RUN docker-php-ext-install zip
-
-# Install Swoole extension
-
-RUN pecl install openswoole-4.10.0
-RUN docker-php-ext-enable openswoole
+    software-properties-common
+RUN apt-get update
+RUN add-apt-repository universe
+RUN add-apt-repository ppa:ondrej/php
+RUN apt install -yq --no-install-recommends php8.1
+RUN apt install -yq  php8.1-mbstring php8.1-mysql php8.1-curl php8.1-xml
 #INSTALL VIA MANUALLY
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# INSTALL Yasd
-# RUN cd /tmp  &&\
-#     git clone https://github.com/swoole/yasd.git && \
-#     cd /tmp/yasd && \
-#     phpize --clean && \
-#     phpize && \
-#     ./configure && \
-#     make clean && \
-#     make && \
-#     make install && \
-#      cd /
-# CONFIGURE PHP
-RUN mkdir -p /usr/local/etc/php/conf-available
-COPY resources/custom-php.ini /usr/local/etc/php/conf-available/custom-php.ini
-RUN ln -s /usr/local/etc/php/conf-available/custom-php.ini /usr/local/etc/php/conf.d/
+# install swoole
+RUN add-apt-repository ppa:openswoole/ppa -y
+RUN apt install -y php8.1-openswoole
+RUN phpenmod -s cli openswoole
 # PROVISING OF VOLUMES
 VOLUME ["/var/www/html"]
 
