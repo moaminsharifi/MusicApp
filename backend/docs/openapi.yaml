@@ -1,0 +1,290 @@
+openapi: 3.0.3
+info:
+  title: 'Music App Api Documentation'
+  description: 'api documentation with various version'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://backend.test'
+paths:
+  /api/auth/login:
+    post:
+      summary: Login
+      description: 'This endpoint lets to Login and get your token.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  ok: 1
+                  data:
+                    name: 'Adella Gleichner III'
+                    email: marquise34@example.net
+                    user_id: 1
+                    is_admin: false
+                    token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                    token_type: Bearer
+                properties:
+                  ok:
+                    type: integer
+                    example: 1
+                  data:
+                    type: object
+                    example:
+                      name: 'Adella Gleichner III'
+                      email: marquise34@example.net
+                      user_id: 1
+                      is_admin: false
+                      token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                      token_type: Bearer
+        404:
+          description: 'User Not found - 10001'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n        \"ok\":false,\n        \"error\" => \"User does not exist!\",\n        \"data\" => \"\",\n      }"
+        400:
+          description: 'Form validation - 00004'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"ok\": false,\n    \"error\" => \"Invalid Input For Submit\",\n    \"data\" => \"\"\n}\n"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'user email.'
+                  example: maxime
+                password:
+                  type: string
+                  description: 'user password.'
+                  example: enim
+                remember_me:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - email
+                - password
+      security: []
+  /api/auth/signup:
+    post:
+      summary: Register
+      description: 'This endpoint lets to register and get your token.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  ok: 1
+                  data:
+                    name: 'Adella Gleichner III'
+                    email: marquise34@example.net
+                    user_id: 1
+                    is_admin: false
+                    token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                    token_type: Bearer
+                properties:
+                  ok:
+                    type: integer
+                    example: 1
+                  data:
+                    type: object
+                    example:
+                      name: 'Adella Gleichner III'
+                      email: marquise34@example.net
+                      user_id: 1
+                      is_admin: false
+                      token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                      token_type: Bearer
+        400:
+          description: 'Email exist in database - 00004'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"ok\": false,\n    \"error\" => \"Invalid Input For Submit\",\n    \"data\" => \"\"\n}\n"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'user name.'
+                  example: sint
+                email:
+                  type: string
+                  description: 'user email.'
+                  example: totam
+                password:
+                  type: string
+                  description: 'user password.'
+                  example: voluptatem
+                password_confirm:
+                  type: string
+                  description: 'user password confirm.'
+                  example: perspiciatis
+              required:
+                - name
+                - email
+                - password
+                - password_confirm
+      security: []
+  /api/auth/logout:
+    get:
+      summary: Logout
+      description: 'This endpoint get token and make it invalid.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  ok: true
+                  data:
+                    message: 'Successfully logged out'
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    example:
+                      message: 'Successfully logged out'
+        403:
+          description: 'Token Invalid - 10004'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n        \"ok\":false,\n        \"error\" => \"Token not valid.\",\n        \"data\" => \"\",\n      }\n"
+      tags:
+        - Endpoints
+  /api/auth/user:
+    get:
+      summary: 'User Data'
+      description: 'This endpoint get token and return user data.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  ok: 1
+                  data:
+                    name: 'Adella Gleichner III'
+                    email: marquise34@example.net
+                    user_id: 1
+                    is_admin: false
+                    token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                    token_type: Bearer
+                properties:
+                  ok:
+                    type: integer
+                    example: 1
+                  data:
+                    type: object
+                    example:
+                      name: 'Adella Gleichner III'
+                      email: marquise34@example.net
+                      user_id: 1
+                      is_admin: false
+                      token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
+                      token_type: Bearer
+        403:
+          description: 'Token Invalid - 10004'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n        \"ok\":false,\n        \"error\" => \"Token not valid.\",\n        \"data\" => \"\",\n      }\n"
+      tags:
+        - Endpoints
+tags:
+  -
+    name: Endpoints
+    description: ''

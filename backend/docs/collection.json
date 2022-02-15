@@ -1,0 +1,204 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/backend.test"
+        }
+    ],
+    "info": {
+        "name": "Music App Api Documentation",
+        "_postman_id": "be6ddb28-a3b2-4343-ab6a-e977d183749d",
+        "description": "api documentation with various version",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"maxime\",\"password\":\"enim\",\"remember_me\":false}"
+                        },
+                        "description": "This endpoint lets to Login and get your token.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n        \"ok\":false,\n        \"error\" => \"User does not exist!\",\n        \"data\" => \"\",\n      }",
+                            "name": "User Not found - 10001"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"ok\": false,\n    \"error\" => \"Invalid Input For Submit\",\n    \"data\" => \"\"\n}\n",
+                            "name": "Form validation - 00004"
+                        }
+                    ]
+                },
+                {
+                    "name": "Register",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/signup",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/signup"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"sint\",\"email\":\"totam\",\"password\":\"voluptatem\",\"password_confirm\":\"perspiciatis\"}"
+                        },
+                        "description": "This endpoint lets to register and get your token.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"ok\": false,\n    \"error\" => \"Invalid Input For Submit\",\n    \"data\" => \"\"\n}\n",
+                            "name": "Password not match - 00004"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"ok\": false,\n    \"error\" => \"Invalid Input For Submit\",\n    \"data\" => \"\"\n}\n",
+                            "name": "Email exist in database - 00004"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint get token and make it invalid."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"ok\": true,\n  \"data\": {\n    \"message\" : \"Successfully logged out\"\n }\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n        \"ok\":false,\n        \"error\" => \"Token not valid.\",\n        \"data\" => \"\",\n      }\n",
+                            "name": "Token Invalid - 10004"
+                        }
+                    ]
+                },
+                {
+                    "name": "User Data",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint get token and return user data."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n        \"ok\":false,\n        \"error\" => \"Token not valid.\",\n        \"data\" => \"\",\n      }\n",
+                            "name": "Token Invalid - 10004"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
