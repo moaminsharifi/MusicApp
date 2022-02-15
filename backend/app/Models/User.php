@@ -41,4 +41,42 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+     public function getUserData()
+    {
+        return [
+
+            'name'=> $this->name,
+            'email'=> $this->email,
+            'user_id' => $this->id,
+            'is_admin'=> $this->isAdmin(),
+
+
+
+
+        ];
+    }
+    /**
+     * Check User IS Admin
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if ((int)$this->is_admin == 1){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Set User To Admin
+     */
+    public  function setAdmin(){
+        $this->is_admin = 1;
+        $this->save();
+
+    }
+
+
 }
