@@ -10,4 +10,4 @@ php artisan optimize
 
 # chmod -R 777 /var/www/html/storage
 # php artisan octane:start
-php artisan serve --port=8000
+php artisan serve --host=0.0.0.0 --port=8000
