@@ -38,7 +38,7 @@ paths:
                   data:
                     name: 'Adella Gleichner III'
                     email: marquise34@example.net
-                    user_id: 1
+                    id: 1
                     is_admin: false
                     token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                     token_type: Bearer
@@ -51,7 +51,7 @@ paths:
                     example:
                       name: 'Adella Gleichner III'
                       email: marquise34@example.net
-                      user_id: 1
+                      id: 1
                       is_admin: false
                       token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                       token_type: Bearer
@@ -81,11 +81,11 @@ paths:
                 email:
                   type: string
                   description: 'user email.'
-                  example: maxime
+                  example: tempore
                 password:
                   type: string
                   description: 'user password.'
-                  example: enim
+                  example: ducimus
                 remember_me:
                   type: boolean
                   description: ''
@@ -125,7 +125,7 @@ paths:
                   data:
                     name: 'Adella Gleichner III'
                     email: marquise34@example.net
-                    user_id: 1
+                    id: 1
                     is_admin: false
                     token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                     token_type: Bearer
@@ -138,7 +138,7 @@ paths:
                     example:
                       name: 'Adella Gleichner III'
                       email: marquise34@example.net
-                      user_id: 1
+                      id: 1
                       is_admin: false
                       token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                       token_type: Bearer
@@ -161,19 +161,19 @@ paths:
                 name:
                   type: string
                   description: 'user name.'
-                  example: sint
+                  example: molestiae
                 email:
                   type: string
                   description: 'user email.'
-                  example: totam
+                  example: deserunt
                 password:
                   type: string
                   description: 'user password.'
-                  example: voluptatem
+                  example: fugiat
                 password_confirm:
                   type: string
                   description: 'user password confirm.'
-                  example: perspiciatis
+                  example: aut
               required:
                 - name
                 - email
@@ -258,7 +258,7 @@ paths:
                   data:
                     name: 'Adella Gleichner III'
                     email: marquise34@example.net
-                    user_id: 1
+                    id: 1
                     is_admin: false
                     token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                     token_type: Bearer
@@ -271,7 +271,7 @@ paths:
                     example:
                       name: 'Adella Gleichner III'
                       email: marquise34@example.net
-                      user_id: 1
+                      id: 1
                       is_admin: false
                       token: 1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ
                       token_type: Bearer

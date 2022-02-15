@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Music App Api Documentation",
-        "_postman_id": "be6ddb28-a3b2-4343-ab6a-e977d183749d",
+        "_postman_id": "9dbb9485-5f81-43a0-b657-a124d5ca0654",
         "description": "api documentation with various version",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"maxime\",\"password\":\"enim\",\"remember_me\":false}"
+                            "raw": "{\"email\":\"tempore\",\"password\":\"ducimus\",\"remember_me\":false}"
                         },
                         "description": "This endpoint lets to Login and get your token.",
                         "auth": {
@@ -52,7 +52,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
                             "name": ""
                         },
                         {
@@ -91,7 +91,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"sint\",\"email\":\"totam\",\"password\":\"voluptatem\",\"password_confirm\":\"perspiciatis\"}"
+                            "raw": "{\"name\":\"molestiae\",\"email\":\"deserunt\",\"password\":\"fugiat\",\"password_confirm\":\"aut\"}"
                         },
                         "description": "This endpoint lets to register and get your token.",
                         "auth": {
@@ -102,7 +102,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
                             "name": ""
                         },
                         {
@@ -184,7 +184,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"user_id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
+                            "body": "{\n    \"ok\": 1,\n    \"data\": {\n        \"name\": \"Adella Gleichner III\",\n        \"email\": \"marquise34@example.net\",\n        \"id\": 1,\n        \"is_admin\": false,\n        \"token\": \"1|D8zIKOgLJLqhGCySok9UVsaT4f1QjkBY0qv5iVSJ\",\n        \"token_type\": \"Bearer\"\n    }\n}\n",
                             "name": ""
                         },
                         {
