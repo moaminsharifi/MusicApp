@@ -12,14 +12,9 @@ abstract class TestCase extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-        Artisan::call('migrate');
-        #Artisan::call('passport:install');
     }
     public function tearDown(): void
     {
-
-
-        Artisan::call('migrate:fresh');
         parent::tearDown();
     }
 
