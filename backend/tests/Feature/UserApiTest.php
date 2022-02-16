@@ -10,6 +10,7 @@ use Tests\TestCase;
 use Database\Factories\UserAPIFactory;
 class UserApiTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      * @test
