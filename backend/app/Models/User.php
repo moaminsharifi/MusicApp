@@ -34,6 +34,8 @@ class User extends Authenticatable
         'remember_token',
         'updated_at',
         'created_at',
+        'email_verified_at',
+        'profile_photo_path',
     ];
 
     /**
