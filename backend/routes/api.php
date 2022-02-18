@@ -18,13 +18,14 @@ use App\Http\Controllers\API\AuthController;
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::post('login', [AuthController::class,'login']);
-    Route::post('signup', [AuthController::class,'signup']);
+    Route::post('login', [AuthController::class,'login'])->name('login');
+    Route::post('signup', [AuthController::class,'signup'])->name('signup');
 
     Route::group([
         'middleware' => 'auth:sanctum'
     ], function() {
-        Route::get('logout', [AuthController::class,'logout']);
-        Route::get('user', [AuthController::class,'user']);
+        Route::get('logout', [AuthController::class,'logout'])->name('logout');
+        Route::get('user', [AuthController::class,'user'])->name('userData');
     });
 });
+
