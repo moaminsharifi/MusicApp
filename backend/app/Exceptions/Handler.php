@@ -8,8 +8,10 @@ use App\Helpers\CustomError;
 use App\Helpers\CustomResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 use \Illuminate\Http\Request;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -61,7 +63,11 @@ class Handler extends ExceptionHandler
         elseif ($exception instanceof ModelNotFoundException) {
             return response()->json([
                 'error' => 'Entry for '.str_replace('App\\', '', $exception->getModel()).' not found'], 404);
+        }elseif($exception instanceof AuthenticationException && $request->wantsJson()){
+            return CustomResponse::createError('00005' ,);
+
         }
+
 
 
 
