@@ -1,4 +1,12 @@
 # DevDoc - Documentation for Developers
+# Dev Todo
+## user part
+- user rest password
+- user email verification
+- user two-factor authentication
+- user change password
+- user change email
+- user change name
 ## Setup docker
 #### Setup Network
 
