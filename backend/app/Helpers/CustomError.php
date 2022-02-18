@@ -38,6 +38,10 @@ class CustomError
             'message' => 'Invalid Input For Submit',
             'shortener' => 'bad_request',
         ),
+        '00005' => array(
+            'message' => 'Unauthenticated.',
+            'shortener' => 'not_authorized',
+        ),
 
         /**
          * User Part - 10
