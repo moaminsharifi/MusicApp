@@ -6,6 +6,7 @@ networks:
       name: ${EXTERNAL_NETWORK_NAME}
 volumes:
   mariadb-data:
+  minio-data-1:
 
 services:
   music-app-backend:
@@ -30,3 +31,17 @@ services:
       - internal_network
     env_file:
       - ./db/.env
+  music-app-minio:
+    image: quay.io/minio/minio:RELEASE.2022-02-18T01-50-10Z
+    command:  minio server /mnt/data1 --console-address ":9001"
+    expose:
+      - ${INTERNAL_MINIO_S3_PORT}
+      - ${INTERNAL_MINIO_CONSOLE_PORT}
+    ports:
+      - ${EXPOSED_MINIO_S3_PORT}:${INTERNAL_MINIO_S3_PORT}
+      - ${EXPOSED_MINIO_CONSOLE_PORT}:${INTERNAL_MINIO_CONSOLE_PORT}
+    env_file:
+      - ./minio/.env
+    volumes:
+      - minio-data-1:/data1
+    restart: always
