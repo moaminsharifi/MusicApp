@@ -35,7 +35,7 @@ use NAME to specify container name, normally docker container name is:
 
 - `musicapp_music-app-backend_1` for backend
  - `musicapp_music-app-db_1` for database
-
+ - `musicapp_music-app-minio_1` for minio
 
 ## Database Design in DB diagram
 ![Database Design Of Music App](/assets/DatabaseDesign.png)
