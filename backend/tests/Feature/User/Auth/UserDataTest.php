@@ -59,7 +59,6 @@ class UserData extends TestCase
 
         // send request
         $response = $this->json('GET',route('api.userData'), [], $header);
-        print_r($response->getContent());
         // after send request assertion
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(
