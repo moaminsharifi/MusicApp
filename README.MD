@@ -4,3 +4,13 @@ Online Music player platform with various features developed in different langua
 
 ## [Developers Documentation](DevDoc.md)
 ## Features
+
+#### user
+
+##### auth
+ - login
+ - register
+ - logout
+ - get details of the user
+##### profile
+
