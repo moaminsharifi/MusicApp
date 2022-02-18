@@ -5,12 +5,39 @@ namespace Tests\Feature;
 use App\Helpers\CustomResponse;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Str;
 use Tests\TestCase;
 use Database\Factories\UserAPIFactory;
 class UserApiTest extends TestCase
 {
     use RefreshDatabase;
+    private $jsonStructUserData =  [
+            'ok',
+            'data'=>[
+                'token',
+                'token_type',
+                'is_admin',
+                'name',
+                'email'
+            ]
+        ];
+    /**
+     * Sample Test Template
+     *
+     */
+    public function example(){
+        // prepare data
+
+        // before send assertion
+
+        // send request
+
+        // after send request assertion
+
+    }
+
+
     /**
      * A basic feature test example.
      * @test
