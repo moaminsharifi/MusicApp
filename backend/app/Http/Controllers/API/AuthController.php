@@ -118,6 +118,12 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return CustomResponse::createSuccess(request()->user()->toArray());
+        $success = request()->user()->toArray();
+        $authHeader = request()->header('Authorization');
+        $authHeader = explode(' ', $authHeader);
+        $success['token'] =  $authHeader[1];
+        $success['token_type'] = $authHeader[0];
+
+        return CustomResponse::createSuccess($success);
     }
 }
