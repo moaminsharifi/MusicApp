@@ -24,9 +24,9 @@ class SingUpRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:180',
+            'name' => 'required|string|max:180|min:3',
             'email' => 'required|string|email|unique:users|max:180',
-            'password' => 'required|string|max:180',
+            'password' => 'required|string|max:180|min:6',
             'password_confirm'=> 'required|same:password|max:180'
         ];
     }
